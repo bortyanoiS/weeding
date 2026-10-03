@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>В'ячеслав & Анжела — запрошення на весілля</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Montserrat:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #faf5f1;
+        --card: #fff;
+        --ink: #3b3a35;
+        --sage: #a08579;
+        --sage-d: #7a5b50;
+        --gold: #b9806b;
+        --line: #eadfd7;
+        box-sizing: border-box;
+        padding-top: env(safe-area-inset-top, 0px);
+        padding-bottom: env(safe-area-inset-bottom, 0px);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root:not([data-theme="light"]) {
+          --bg: #241e1b;
+          --card: #2f2723;
+          --ink: #f3e9e2;
+          --line: #463a34;
+        }
+      }
+      :root[data-theme="dark"] {
+        --bg: #241e1b;
+        --card: #2f2723;
+        --ink: #f3e9e2;
+        --line: #463a34;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        font-family: "Montserrat", Arial, sans-serif;
+        font-weight: 300;
+        line-height: 1.7;
+      }
+      h1,
+      h2,
+      .script {
+        font-family: "Cormorant Garamond", Georgia, serif;
+        font-weight: 600;
+      }
+      section {
+        padding: 80px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+        text-align: center;
+      }
+      h2 {
+        font-size: 2.4rem;
+        margin: 0 0 8px;
+        color: var(--sage-d);
+      }
+      .sub {
+        color: var(--gold);
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        margin-bottom: 30px;
+      }
+      /* HERO: замініть url() на своє фото (або data: URI) */
+      .hero {
+        position: relative; /* Обов'язково додайте це, щоб ефект прив'язався до низу */
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #fff;
+        max-width: none;
+        --photo: url("photo-3.jpg");
+        background:
+          linear-gradient(rgba(80, 58, 50, 0.45), rgba(80, 58, 50, 0.55))
+            center / cover,
+          var(--photo, linear-gradient(135deg, #a08579, #e8b4a0)) center 43% /
+            cover;
+      }
+
+      /* Плавний градієнт-розмиття внизу */
+      /* Псевдоелемент для СУПЕР ПЛАВНОГО переходу знизу */
+      .hero::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+
+        /* Зменшуємо висоту до 60px — перехід буде зовсім низько у самому низу */
+        height: 60px;
+
+        /* Математично згладжена крива (без жодних видимих ліній): */
+        background: linear-gradient(
+          to bottom,
+          rgba(253, 248, 245, 0) 0%,
+          rgba(253, 248, 245, 0.03) 15%,
+          rgba(253, 248, 245, 0.12) 30%,
+          rgba(253, 248, 245, 0.27) 45%,
+          rgba(253, 248, 245, 0.47) 60%,
+          rgba(253, 248, 245, 0.69) 75%,
+          rgba(253, 248, 245, 0.89) 90%,
+          rgba(253, 248, 245, 1) 100%
+        );
+
+        pointer-events: none;
+      }
+      .hero h1 {
+        font-size: clamp(3rem, 10vw, 6.5rem);
+        margin: 10px 0;
+        line-height: 1.05;
+      }
+      .hero .amp {
+        color: #f3cdbd;
+      }
+      .hero p {
+        letter-spacing: 0.3em;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 24px;
+        padding: 14px 34px;
+        background: var(--gold);
+        color: #fff;
+        border: 0;
+        border-radius: 40px;
+        text-decoration: none;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        font:
+          500 0.8rem "Montserrat",
+          sans-serif;
+        cursor: pointer;
+      }
+      .btn:hover {
+        background: var(--sage-d);
+      }
+      .count {
+        display: flex;
+        gap: 14px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .count div {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 16px 20px;
+        min-width: 90px;
+      }
+      .count b {
+        display: block;
+        font:
+          600 2.2rem "Cormorant Garamond",
+          serif;
+        color: var(--sage-d);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+      .card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 28px 20px;
+      }
+      .card h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        margin: 0 0 6px;
+        color: var(--gold);
+      }
+      .timeline {
+        max-width: 550px;
+        margin: 0 auto;
+        position: relative;
+        padding: 10px 0;
+      }
+
+      /* Вертикальна лінія по центру */
+      .timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 2px;
+        background: var(--sage);
+        transform: translateX(-50%);
+      }
+
+      .timeline div {
+        position: relative;
+        width: 50%;
+        margin-bottom: 24px;
+        box-sizing: border-box;
+      }
+
+      /* Непарні елементи (1, 3, ...) — ЛІВОРУЧ */
+      .timeline div:nth-child(odd) {
+        left: 0;
+        padding-right: 24px;
+        text-align: right;
+      }
+
+      /* Парні елементи (2, 4, ...) — ПРАВОРУЧ */
+      .timeline div:nth-child(even) {
+        left: 50%;
+        padding-left: 24px;
+        text-align: left;
+      }
+
+      /* Крапки на лінії для непарних елементів */
+      .timeline div:nth-child(odd)::before {
+        content: "";
+        position: absolute;
+        right: -6px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--gold);
+        z-index: 1;
+      }
+
+      /* Крапки на лінії для парних елементів */
+      .timeline div:nth-child(even)::before {
+        content: "";
+        position: absolute;
+        left: -6px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: var(--gold);
+        z-index: 1;
+      }
+
+      /* Адаптація для дуже вузьких мобільних екранів (до 380px) */
+      @media (max-width: 380px) {
+        .timeline div {
+          font-size: 0.85rem;
+        }
+        .timeline div:nth-child(odd) {
+          padding-right: 14px;
+        }
+        .timeline div:nth-child(even) {
+          padding-left: 14px;
+        }
+      }
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 10px;
+      }
+      .gallery img {
+        width: 100%;
+        aspect-ratio: 3/4; /* однаковий вертикальний формат */
+        object-fit: cover; /* обрізає по краях, не спотворює */
+        object-position: center; /* якщо обличчя зрізається: center top */
+        border-radius: 12px;
+        display: block;
+      }
+      form {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 30px 22px;
+        text-align: left;
+        max-width: 560px;
+        margin: 0 auto;
+      }
+      label.t {
+        display: block;
+        font-weight: 500;
+        margin: 18px 0 8px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 14px;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        background: var(--bg);
+        color: var(--ink);
+        font: inherit;
+      }
+      .opts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .opts label {
+        cursor: pointer;
+      }
+      .opts input {
+        position: absolute;
+        opacity: 0;
+      }
+      .opts span {
+        display: inline-block;
+        padding: 9px 16px;
+        border: 1px solid var(--line);
+        border-radius: 30px;
+        background: var(--bg);
+        transition: 0.2s;
+      }
+      .opts input:checked + span {
+        background: var(--sage);
+        border-color: var(--sage);
+        color: #fff;
+      }
+      .msg {
+        margin-top: 14px;
+        text-align: center;
+        font-size: 0.9rem;
+        color: var(--sage-d);
+      }
+      .bar {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 8px 0;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+      .bar i {
+        display: block;
+        height: 12px;
+        background: var(--sage);
+        border-radius: 6px;
+        min-width: 4px;
+        transition: width 0.4s;
+      }
+      .bar span:first-child {
+        width: 130px;
+      }
+      #results {
+        display: none;
+        margin-top: 50px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.85rem;
+        text-align: left;
+      }
+      td,
+      th {
+        padding: 8px;
+        border-bottom: 1px solid var(--line);
+      }
+      .big {
+        font:
+          600 clamp(2.2rem, 8vw, 4rem) "Cormorant Garamond",
+          serif;
+        color: var(--gold);
+        line-height: 1.1;
+      }
+      .palette {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 28px;
+        margin-top: 30px;
+      }
+      .palette div {
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      .palette i {
+        display: block;
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        margin: 0 auto 10px;
+        box-shadow: 0 6px 16px rgba(90, 60, 50, 0.15);
+      }
+      footer {
+        padding: 40px 20px;
+        text-align: center;
+        color: var(--gold);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero" id="top">
+      <div>
+        <p>Ми одружуємось</p>
+        <h1>Vyacheslav <span class="amp">&</span> Anzhela</h1>
+        <p>17 • 07 • 2027</p>
+        <a class="btn" href="#rsvp">Підтвердити присутність</a>
+      </div>
+    </section>
+
+    <section>
+      <div class="sub">Запрошення</div>
+      <h2>Дорогі гості!</h2>
+      <p>
+        Найщасливіший день у нашому житті ми хочемо розділити з найріднішими
+        людьми. Будемо щасливі бачити вас на нашому святі кохання, сміху та
+        танців.
+      </p>
+      <div class="count" id="count"></div>
+    </section>
+
+    <section>
+      <div class="sub">Програма дня</div>
+      <h2>Як усе буде</h2>
+      <div class="timeline">
+        <div><b>12:30</b> — Збір гостей</div>
+        <div><b>13:00</b> — Церемонія</div>
+        <div><b>14:00</b> — Фотосесія</div>
+        <div><b>15:30</b> — Початок банкету</div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sub">Деталі</div>
+      <h2>Де і коли</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Дата</h3>
+          17 липня 2027<br />субота
+        </div>
+        <div class="card">
+          <h3>Місце</h3>
+          Ресторація Терезине<br />вулиця Першотравнева, 4а,<br />Терезине
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sub">Дрес-код</div>
+      <h2>Кольори свята</h2>
+      <p>Будемо раді, якщо ви підтримаєте нашу палітру</p>
+      <div class="palette">
+        <div><i style="background: #9c8279"></i>мокко</div>
+        <div><i style="background: #b9a99a"></i>тауп</div>
+        <div><i style="background: #e8b4a0"></i>пудровий персик</div>
+        <div>
+          <i style="background: #fff; border: 1px solid var(--line)"></i>білий
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sub">Наші моменти</div>
+      <h2>Галерея</h2>
+      <div class="gallery">
+        <div class="gallery">
+          <img src="photo-1.jpg" alt="В'ячеслав та Анжела" />
+          <img src="photo-2.jpg" alt="В'ячеслав та Анжела" />
+          <img src="photo-3.jpg" alt="В'ячеслав та Анжела" />
+        </div>
+      </div>
+    </section>
+
+    <section id="rsvp">
+      <div class="sub">RSVP</div>
+      <h2>Анкета гостя</h2>
+      <p>Допоможіть нам підготуватись — дайте відповідь до 1 червня 2027.</p>
+      <form id="form">
+        <label class="t">Ваше ім'я та прізвище</label>
+        <input
+          type="text"
+          id="name"
+          required
+          maxlength="80"
+          placeholder="Іван Петренко"
+        />
+
+        <label class="t">Чи будете присутні?</label>
+        <div class="opts">
+          <label
+            ><input type="radio" name="come" value="Так" required /><span
+              >Так, з радістю!</span
+            ></label
+          >
+          <label
+            ><input type="radio" name="come" value="Ні" /><span
+              >На жаль, ні</span
+            ></label
+          >
+        </div>
+
+        <label class="t">Що будете пити? (можна кілька)</label>
+        <div class="opts" id="drinks">
+          <label
+            ><input type="checkbox" value="Шампанське" /><span
+              >🥂 Шампанське</span
+            ></label
+          >
+          <label
+            ><input type="checkbox" value="Вино біле" /><span
+              >🍷 Вино біле</span
+            ></label
+          >
+          <label
+            ><input type="checkbox" value="Вино червоне" /><span
+              >🍷 Вино червоне</span
+            ></label
+          >
+          <label
+            ><input type="checkbox" value="Віскі" /><span>🥃 Віскі</span></label
+          >
+          <label
+            ><input type="checkbox" value="Горілка" /><span
+              >🍸 Горілка</span
+            ></label
+          >
+          <label
+            ><input type="checkbox" value="Коньяк" /><span
+              >🥃 Коньяк</span
+            ></label
+          >
+          <label
+            ><input type="checkbox" value="Пиво" /><span>🍺 Пиво</span></label
+          >
+          <label
+            ><input type="checkbox" value="Безалкогольне" /><span
+              >🧃 Безалкогольне</span
+            ></label
+          >
+        </div>
+
+        <label class="t">Побажання (алергії, +1 тощо)</label>
+        <input
+          type="text"
+          id="note"
+          maxlength="200"
+          placeholder="необов'язково"
+        />
+
+        <div style="text-align: center">
+          <button class="btn" type="submit">Надіслати</button>
+        </div>
+        <div class="msg" id="msg"></div>
+      </form>
+
+      <div id="results">
+        <h2>Відповіді гостей</h2>
+        <p id="total"></p>
+        <div id="bars" style="max-width: 520px; margin: 0 auto"></div>
+        <div style="overflow-x: auto; margin-top: 24px">
+          <table id="table"></table>
+        </div>
+      </div>
+    </section>
+
+    <footer>З любов'ю, В'ячеслав та Анжела ♥</footer>
+
+    <script>
+      // ---- Зворотний відлік ----
+      (function () {
+        var target = new Date(2027, 6, 17, 16, 0, 0),
+          el = document.getElementById("count");
+        function tick() {
+          var d = target - new Date();
+          if (d < 0) d = 0;
+          var v = [
+            [Math.floor(d / 864e5), "днів"],
+            [Math.floor(d / 36e5) % 24, "годин"],
+            [Math.floor(d / 6e4) % 60, "хвилин"],
+            [Math.floor(d / 1e3) % 60, "секунд"],
+          ];
+          el.innerHTML = v
+            .map(function (x) {
+              return "<div><b>" + x[0] + "</b>" + x[1] + "</div>";
+            })
+            .join("");
+        }
+        tick();
+        setInterval(tick, 1000);
+      })();
+
+      // ---- Анкета: db (спільні дані) з запасним варіантом localStorage ----
+      var db = null,
+        user = null,
+        uid = null,
+        isOwner = false;
+      var $ = function (i) {
+        return document.getElementById(i);
+      };
+      var LS = "wedding_rsvp_local";
+
+      function esc(s) {
+        var d = document.createElement("div");
+        d.textContent = s == null ? "" : String(s);
+        return d.innerHTML;
+      }
+
+      function render(list) {
+        $("results").style.display = "block";
+        var yes = list.filter(function (r) {
+          return r.come === "Так";
+        }).length;
+        $("total").textContent =
+          "Усього відповідей: " + list.length + " · прийдуть: " + yes;
+        var cnt = {};
+        list.forEach(function (r) {
+          (r.drinks || []).forEach(function (d) {
+            cnt[d] = (cnt[d] || 0) + 1;
+          });
+        });
+        var max = Math.max.apply(null, Object.values(cnt).concat([1]));
+        $("bars").innerHTML =
+          Object.keys(cnt)
+            .sort(function (a, b) {
+              return cnt[b] - cnt[a];
+            })
+            .map(function (k) {
+              return (
+                '<div class="bar"><span>' +
+                esc(k) +
+                '</span><i style="width:' +
+                (cnt[k] / max) * 60 +
+                '%"></i><span>' +
+                cnt[k] +
+                "</span></div>"
+              );
+            })
+            .join("") || "<p>Поки що порожньо</p>";
+        $("table").innerHTML =
+          "<tr><th>Гість</th><th>Буде?</th><th>Напої</th><th>Нотатка</th></tr>" +
+          list
+            .map(function (r) {
+              return (
+                "<tr><td>" +
+                esc(r.name) +
+                "</td><td>" +
+                esc(r.come) +
+                "</td><td>" +
+                esc((r.drinks || []).join(", ")) +
+                "</td><td>" +
+                esc(r.note) +
+                "</td></tr>"
+              );
+            })
+            .join("");
+      }
+
+      function localList() {
+        try {
+          return JSON.parse(localStorage.getItem(LS) || "[]");
+        } catch (e) {
+          return [];
+        }
+      }
+
+      (async function init() {
+        try {
+          user = await claude.use("user");
+          isOwner = user ? user.isOwner() : false;
+        } catch (e) {}
+        try {
+          db = await claude.use("db");
+          if (db && user && user.id) uid = await user.id();
+        } catch (e) {
+          db = null;
+        }
+        // Результати бачить лише власник (ви). Гості бачать тільки анкету.
+        if (db && isOwner) {
+          try {
+            db.collection("rsvp").onSnapshot(function (snap) {
+              var docs = snap.docs || snap || [];
+              render(
+                docs.map(function (d) {
+                  return typeof d.data === "function" ? d.data() : d;
+                }),
+              );
+            });
+          } catch (e) {
+            console.error(e);
+          }
+        }
+      })();
+
+      $("form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+        var rec = {
+          name: $("name").value.trim(),
+          come:
+            (document.querySelector("input[name=come]:checked") || {}).value ||
+            "",
+          drinks: [].slice
+            .call(document.querySelectorAll("#drinks input:checked"))
+            .map(function (i) {
+              return i.value;
+            }),
+          note: $("note").value.trim(),
+          ts: Date.now(),
+        };
+        var msg = $("msg");
+        msg.textContent = "Надсилаємо…";
+        try {
+          if (db) {
+            var id = uid || "g_" + Date.now();
+            await db.collection("rsvp").doc(id).set(rec);
+            msg.textContent = "Дякуємо! Вашу відповідь збережено ♥";
+          } else {
+            var l = localList();
+            l.push(rec);
+            localStorage.setItem(LS, JSON.stringify(l));
+            msg.textContent = "Дякуємо! (збережено лише на цьому пристрої)";
+          }
+          $("form").reset();
+        } catch (err) {
+          msg.textContent = "Не вдалося надіслати. Спробуйте ще раз.";
+        }
+      });
+    </script>
+  </body>
+</html>
