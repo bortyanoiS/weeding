@@ -13,8 +13,8 @@
     />
     <style>
       :root {
-        --bg: #faf5f1;
-        --card: #fff;
+        --bg: #ffffff;
+        --card: #ffffff;
         --ink: #3b3a35;
         --sage: #a08579;
         --sage-d: #7a5b50;
@@ -23,20 +23,6 @@
         box-sizing: border-box;
         padding-top: env(safe-area-inset-top, 0px);
         padding-bottom: env(safe-area-inset-bottom, 0px);
-      }
-      @media (prefers-color-scheme: dark) {
-        :root:not([data-theme="light"]) {
-          --bg: #241e1b;
-          --card: #2f2723;
-          --ink: #f3e9e2;
-          --line: #463a34;
-        }
-      }
-      :root[data-theme="dark"] {
-        --bg: #241e1b;
-        --card: #2f2723;
-        --ink: #f3e9e2;
-        --line: #463a34;
       }
       html {
         scroll-behavior: smooth;
@@ -109,14 +95,14 @@
         /* Математично згладжена крива (без жодних видимих ліній): */
         background: linear-gradient(
           to bottom,
-          rgba(253, 248, 245, 0) 0%,
-          rgba(253, 248, 245, 0.03) 15%,
-          rgba(253, 248, 245, 0.12) 30%,
-          rgba(253, 248, 245, 0.27) 45%,
-          rgba(253, 248, 245, 0.47) 60%,
-          rgba(253, 248, 245, 0.69) 75%,
-          rgba(253, 248, 245, 0.89) 90%,
-          rgba(253, 248, 245, 1) 100%
+          rgba(255, 255, 255, 0) 0%,
+          rgba(255, 255, 255, 0.03) 15%,
+          rgba(255, 255, 255, 0.12) 30%,
+          rgba(255, 255, 255, 0.27) 45%,
+          rgba(255, 255, 255, 0.47) 60%,
+          rgba(255, 255, 255, 0.69) 75%,
+          rgba(255, 255, 255, 0.89) 90%,
+          rgba(255, 255, 255, 1) 100%
         );
 
         pointer-events: none;
@@ -435,9 +421,6 @@
         <div><b>13:00</b> — Церемонія</div>
         <div><b>14:00</b> — Фотосесія</div>
         <div><b>15:30</b> — Початок банкету</div>
-        <div><b>19:00</b> — Весільний торт</div>
-        <div><b>22:00</b> — Happy End</div>
-        <div><b>22:30</b> — Рахування ваших грошиків</div>
       </div>
     </section>
 
@@ -474,16 +457,14 @@
       <div class="sub">Наші моменти</div>
       <h2>Галерея</h2>
       <div class="gallery">
-        <div class="gallery">
-          <img src="photo-1.jpg" alt="В'ячеслав та Анжела" />
-          <img src="photo-2.jpg" alt="В'ячеслав та Анжела" />
-          <img src="photo-3.jpg" alt="В'ячеслав та Анжела" />
-        </div>
+        <img src="photo-1.jpg" alt="В'ячеслав та Анжела" />
+        <img src="photo-2.jpg" alt="В'ячеслав та Анжела" />
+        <img src="photo-3.jpg" alt="В'ячеслав та Анжела" />
       </div>
     </section>
 
     <section id="rsvp">
-      <div class="sub">Анкета</div>
+      <div class="sub">RSVP</div>
       <h2>Анкета гостя</h2>
       <p>Допоможіть нам підготуватись — дайте відповідь до 1 червня 2027.</p>
       <form id="form">
